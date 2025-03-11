@@ -3,8 +3,14 @@ const cors = require("cors") // For sharing a resource that are on different URL
 const mongoose = require("mongoose") // Declaring MongoDB Schema
 require("dotenv").config()
 
+const projRoutes = require("./routes/projectRoutes")
+const connectToDb = require("./dbConfig")
+
 const app = express()
 const PORT = process.env.PORT || 5000
+
+// Connecting to the Database
+connectToDb()
 
 // To allow for cross origin sharing
 app.use(cors())
@@ -13,8 +19,9 @@ app.use(cors())
 app.use(express.json())
 
 // ==== Routes ====
+app.use("/api/projects", projRoutes)
 app.get("/", (req, res) => {
-  res.send("Hello world")
+  res.send({ message: "Hello world" })
 })
 
 // ==== Listen for connections ====
