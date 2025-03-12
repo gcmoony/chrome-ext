@@ -5,6 +5,7 @@ require("dotenv").config()
 
 const projRoutes = require("./routes/projectRoutes")
 const linkRoutes = require("./routes/linkRoutes")
+const qaRoutes = require("./routes/qaRoutes")
 const connectToDb = require("./dbConfig")
 
 const app = express()
@@ -22,6 +23,7 @@ app.use(express.json())
 // ==== Routes ====
 app.use("/api/projects", projRoutes)
 app.use("/api/links", linkRoutes)
+app.use("/api/qa", qaRoutes)
 
 // ==== General Route ====
 app.get("/", (req, res) => {
