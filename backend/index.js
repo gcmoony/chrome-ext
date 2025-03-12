@@ -4,6 +4,7 @@ const mongoose = require("mongoose") // Declaring MongoDB Schema
 require("dotenv").config()
 
 const projRoutes = require("./routes/projectRoutes")
+const linkRoutes = require("./routes/linkRoutes")
 const connectToDb = require("./dbConfig")
 
 const app = express()
@@ -20,6 +21,9 @@ app.use(express.json())
 
 // ==== Routes ====
 app.use("/api/projects", projRoutes)
+app.use("/api/links", linkRoutes)
+
+// ==== General Route ====
 app.get("/", (req, res) => {
   res.send({ message: "Hello world" })
 })
