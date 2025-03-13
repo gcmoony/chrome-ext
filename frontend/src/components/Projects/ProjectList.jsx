@@ -1,34 +1,47 @@
-import { Container } from "@mui/material"
+import { CircularProgress, Container, Grid2 } from "@mui/material"
 import RefreshButton from "../Buttons/RefreshButton"
-import { useEffect, useState } from "react"
-import axios from "axios"
+import useProjectStore from "../../stores/useProjectStore"
+import { useEffect } from "react"
+import ProjectCard from "./ProjectCard"
 
 const ProjectList = () => {
-  const [projectData, setProjectData] = useState([])
+  const { projects, fetchProjects } = useProjectStore()
+
   useEffect(() => {
-    axios
-      .get("http://localhost:5001/api/projects")
-      .then((res) => {
-        console.log(res)
-        setProjectData(res.data)
-      })
-      .catch((err) => console.log(err))
-  }, [])
+    fetchProjects()
+  }, [fetchProjects])
   return (
     <Container
-      sx={{
-        bgcolor: "#181818",
-        // padding: "0px 0px 0px 0px !important",
-        // outline: "solid red 2px",
-      }}
+      sx={
+        {
+          // bgcolor: "#181818",
+        }
+      }
     >
       <h1 style={{ textAlign: "center" }}>Project List</h1>
-      <ul>
-        {projectData &&
-          projectData.map((project, key) => <li key={key}>{project.name}</li>)}
-      </ul>
+      {projects.length === 0 ? (
+        <CircularProgress
+          size={40}
+          sx={{ display: "block", margin: "1rem auto" }}
+        />
+      ) : (
+        <Grid2
+          container
+          spacing={1}
+        >
+          {projects.map((project) => {
+            return (
+              <ProjectCard
+                project={project}
+                key={project._id}
+              />
+            )
+          })}
+        </Grid2>
+      )}
+
       <RefreshButton
-        sx={{ width: "100%" }}
+        sx={{ width: "100%", margin: "1rem 0" }}
         varient={"outlined"}
       />
     </Container>
