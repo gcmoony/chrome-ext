@@ -27,7 +27,7 @@ app.use("/api/qa", qaRoutes)
 
 // ==== General Route ====
 app.get("/", (req, res) => {
-  res.send({ message: "Hello world" })
+  res.send({ message: "Chrome Ext is Running" })
 })
 
 // ==== Listen for connections ====
