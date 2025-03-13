@@ -17,11 +17,14 @@ router.post("/", async (req, res) => {
   }
 })
 
-// Get All QAs
+// Get All QAs (using projectID)
 // Should return 200
 router.get("/", async (req, res) => {
   try {
-    const qas = await objSchema.find().sort({ createdAt: -1 })
+    console.log("QA:", req.query)
+    const { projectID } = req.query
+    const query = projectID ? { project: projectID } : {}
+    const qas = await objSchema.find(query).sort({ createdAt: -1 })
     res.json(qas)
   } catch (err) {
     res.status(500).json(err)
