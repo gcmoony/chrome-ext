@@ -2,7 +2,7 @@ import { CircularProgress, Container, Grid2 } from "@mui/material"
 import RefreshButton from "../Buttons/RefreshButton"
 import useProjectStore from "../../stores/useProjectStore"
 import { useEffect } from "react"
-import ProjectCard from "./ProjectCard"
+import ProjectCard from "../Cards/ProjectCard"
 
 const ProjectList = () => {
   const { projects, fetchProjects } = useProjectStore()

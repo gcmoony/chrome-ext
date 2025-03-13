@@ -1,8 +1,9 @@
-import { Badge, Button, Chip, Grid2, Link, Stack } from "@mui/material"
+import { Button, Chip, Grid2, Stack } from "@mui/material"
 import Card from "@mui/material/Card"
 import CardActions from "@mui/material/CardActions"
 import CardContent from "@mui/material/CardContent"
 import Typography from "@mui/material/Typography"
+import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined"
 
 const ProjectCard = ({ size, project }) => {
   return (
@@ -33,21 +34,30 @@ const ProjectCard = ({ size, project }) => {
               project.tags.map((tag, key) => {
                 return (
                   <Chip
+                    color={"info"}
                     key={key}
                     label={tag}
+                    size='small'
                   />
                 )
               })}
           </Stack>
         </CardContent>
         {/* A button for the card */}
-        <CardActions>
+        <CardActions
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "flex-end",
+          }}
+        >
           <Button
-            size='small'
+            sx={{ textAlign: "center" }}
             href={`/${project._id}/info`}
             onClick={() => console.log(project)}
           >
             Learn More
+            <ArrowForwardOutlinedIcon />
           </Button>
         </CardActions>
       </Card>
