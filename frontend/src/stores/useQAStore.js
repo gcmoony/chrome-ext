@@ -5,8 +5,10 @@ const API_URL = "http://localhost:5001/api/qa"
 
 const useQAStore = create((set) => ({
   qas: [],
-  fetchQAs: async () => {
-    const res = await axios.get(API_URL)
+  fetchQAs: async (projectID) => {
+    const res = await axios.get(API_URL, {
+      params: projectID ? { projectID } : {},
+    })
     set({ qas: res.data })
   },
   createQA: async (newQA) => {
