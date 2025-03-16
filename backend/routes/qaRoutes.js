@@ -21,7 +21,6 @@ router.post("/", async (req, res) => {
 // Should return 200
 router.get("/", async (req, res) => {
   try {
-    console.log("QA:", req.query)
     const { projectID } = req.query
     const query = projectID ? { project: projectID } : {}
     const qas = await objSchema.find(query).sort({ createdAt: -1 })

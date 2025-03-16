@@ -54,7 +54,6 @@ const ProjectCard = ({ size, project }) => {
           <Button
             sx={{ textAlign: "center" }}
             href={`/${project._id}/info`}
-            onClick={() => console.log(project)}
           >
             Learn More
             <ArrowForwardOutlinedIcon />

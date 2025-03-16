@@ -35,11 +35,12 @@ const ProjectInfo = () => {
         {/* ==== Link Section ==== */}
         <Divider>Links</Divider>
         <Container>
-          {links.length === 0 ? (
-            <CircularProgress
-              size={40}
-              sx={{ display: "block", margin: "1rem auto" }}
-            />
+          {links && links.length === 0 ? (
+            // <CircularProgress
+            //   size={40}
+            //   sx={{ display: "block", margin: "1rem auto" }}
+            // />
+            "Nothing here yet..."
           ) : (
             <Grid2
               container
@@ -60,11 +61,12 @@ const ProjectInfo = () => {
         {/* ==== QA Section ==== */}
         <Divider sx={{ marginTop: 3 }}>Q&A's</Divider>
         <Container>
-          {qas.length === 0 ? (
-            <CircularProgress
-              size={40}
-              sx={{ display: "block", margin: "1rem auto" }}
-            />
+          {qas && qas.length === 0 ? (
+            // <CircularProgress
+            //   size={40}
+            //   sx={{ display: "block", margin: "1rem auto" }}
+            // />
+            "Looking empty here..."
           ) : (
             <Grid2
               container

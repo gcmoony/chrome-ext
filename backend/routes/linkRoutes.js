@@ -21,7 +21,6 @@ router.post("/", async (req, res) => {
 // Should return 200
 router.get("/", async (req, res) => {
   try {
-    console.log("Link:", req.query)
     const { projectID } = req.query // Obtained from the url
     const query = projectID ? { project: projectID } : {}
     const links = await objSchema.find(query).sort({ createdAt: -1 }) // Get by most recent
